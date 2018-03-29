@@ -13,6 +13,7 @@ http://jakemakes.eu/raspberri-pi-torrent-box/
 (
 default username and password are as follows: 
 user:password:level
+pi:raspberry:10
 )
 
 
