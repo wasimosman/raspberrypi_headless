@@ -17,3 +17,8 @@ pi:raspberry:10
 )
 
 
+Setting up Wifi:
+List all connected network adapters `lsusb`
+Then do this: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+
+
