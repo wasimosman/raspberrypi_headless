@@ -8,16 +8,16 @@ sudo apt-get install transmission-cli transmission-common transmission-daemon
 sudo apt-get update
 sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
 
-cd /home/user/Downloads
+cd /home/pi/Downloads
 mkdir transmission
 cd transmission
 mkdir completed incomplete torrents
 
-sudo usermod -a -G debian-transmission user
+sudo usermod -a -G debian-transmission pi
 
-sudo chgrp -R debian-transmission /home/user/Downloads/transmission
+sudo chgrp -R debian-transmission /home/pi/Downloads/transmission
 
-sudo chmod -R 775 /home/user/Downloads/transmission
+sudo chmod -R 775 /home/pi/Downloads/transmission
 
 sudo service transmission-daemon start
 sudo service transmission-daemon stop
@@ -27,14 +27,14 @@ sudo service transmission-daemon reload
 cd /etc/transmission-daemon
 sudo cp -a settings.json settings.json.default
 
-mkdir /home/user/.config/transmission-daemon
+mkdir /home/pi/.config/transmission-daemon
 sudo cp -a /etc/transmission-daemon/settings.json transmission-daemon/
-sudo chgrp -R debian-transmission /home/user/.config/transmission-daemon
-sudo chmod -R 770 /home/user/.config/transmission-daemon
+sudo chgrp -R debian-transmission /home/pi/.config/transmission-daemon
+sudo chmod -R 770 /home/pi/.config/transmission-daemon
 
 cd /etc/transmission-daemon
 sudo rm settings.json 
-sudo ln -s /home/user/.config/transmission-daemon/settings.json settings.json
+sudo ln -s /home/pi/.config/transmission-daemon/settings.json settings.json
 sudo chgrp -R debian-transmission /etc/transmission-daemon/settings.json
 sudo chmod -R 770 /etc/transmission-daemon/settings.json
 
