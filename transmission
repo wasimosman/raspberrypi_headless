@@ -1,0 +1,65 @@
+# These are all the codes for attempts made for setting up transmission to work. Please note: the username for the device is 'pi'.
+
+sudo add-apt-repository ppa:transmissionbt/ppa
+
+sudo apt-get update
+sudo apt-get install transmission-cli transmission-common transmission-daemon
+
+sudo apt-get update
+sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
+
+cd /home/user/Downloads
+mkdir transmission
+cd transmission
+mkdir completed incomplete torrents
+
+sudo usermod -a -G debian-transmission user
+
+sudo chgrp -R debian-transmission /home/user/Downloads/transmission
+
+sudo chmod -R 775 /home/user/Downloads/transmission
+
+sudo service transmission-daemon start
+sudo service transmission-daemon stop
+
+sudo service transmission-daemon reload
+
+cd /etc/transmission-daemon
+sudo cp -a settings.json settings.json.default
+
+mkdir /home/user/.config/transmission-daemon
+sudo cp -a /etc/transmission-daemon/settings.json transmission-daemon/
+sudo chgrp -R debian-transmission /home/user/.config/transmission-daemon
+sudo chmod -R 770 /home/user/.config/transmission-daemon
+
+cd /etc/transmission-daemon
+sudo rm settings.json 
+sudo ln -s /home/user/.config/transmission-daemon/settings.json settings.json
+sudo chgrp -R debian-transmission /etc/transmission-daemon/settings.json
+sudo chmod -R 770 /etc/transmission-daemon/settings.json
+
+# Transmission config file changes
+"download-dir": "/path/to/downloads/folder",
+...
+"incomplete-dir": "/path/to/incomplete/folder",
+"incomplete-dir-enabled": true,
+...
+"rpc-authentication-required": true,
+"rpc-bind-address": "0.0.0.0",
+"rpc-enabled": true,
+"rpc-password": "password",
+"rpc-port": 9091,
+"rpc-username": "username",
+"rpc-whitelist": "127.0.0.1,*.*.*.*",
+"rpc-whitelist-enabled": true,
+...
+"umask": 2,
+...
+"watch-dir": "/media/datadrive/downloads",
+"watch-dir-enabled": true
+
+#
+
+sudo service transmission-daemon reload
+
+
