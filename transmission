@@ -1,10 +1,30 @@
 
 
-Please ignore the rest of the instructions below the link. This link worked(Which is different from the stated instructions):
+
 https://www.unixmen.com/transmission-daemon-setting-transmission-web-debian/
 
 
+# Although all the folders used for the torrent client is owned by the user 'pi', transmission probably runs using another user that is not
+visible.
 
+#So, things that are needed to change permissions:
+
+
+sudo service transmission-daemon stop
+
+sudo usermod -a -G debian-transmission pi
+
+sudo nano /etc/init.d/transmission-daemon
+
+sudo chown -R pi /var/lib/transmission-daemon/info/
+
+sudo chmod 755 /var/lib/transmission-daemon/info/settings.json
+
+sudo chown -R pi /home/pi/Desktop/completed_downloads
+
+sudo service transmission-daemon start
+
+#Separate 
 
 # These are all the codes for attempts made for setting up transmission to work. Please note: the username for the device is 'pi'.
 
