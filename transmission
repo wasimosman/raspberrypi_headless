@@ -1,3 +1,11 @@
+
+
+Please ignore the rest of the instructions below the link. This link worked(Which is different from the stated instructions):
+https://www.unixmen.com/transmission-daemon-setting-transmission-web-debian/
+
+
+
+
 # These are all the codes for attempts made for setting up transmission to work. Please note: the username for the device is 'pi'.
 
 sudo add-apt-repository ppa:transmissionbt/ppa
